@@ -166,10 +166,6 @@ public class Main {
                                         case 6:
                                             System.out.print("Informe o nome do Sneaker -> ");
                                             String snkname = scan.nextLine();
-                                            while (!isString(snkname)) {
-                                                System.out.println("Nome invalido!");
-                                                snkname = scan.next();
-                                            }
 
                                             System.out.print("Informe a descrição do Sneaker -> ");
                                             String desc = scan.nextLine();
@@ -195,6 +191,8 @@ public class Main {
                                             snkDao.adicionar_sneaker(sneaker);
                                             break;
                                         case 7:
+
+                                            boolean isValidEdit = false;
                                             System.out.print("Informe o ID do Sneaker que deseja editar: ");
                                             int editSneakerId = scan.nextInt();
                                             scan.nextLine();
@@ -238,15 +236,21 @@ public class Main {
                                                             sneakerToEdit.setCreator(newCreator);
                                                             snkDao.editar_sneaker(sneakerToEdit);
                                                             System.out.println("Sneaker editado com sucesso!");
+                                                            isValidEdit = true;
+                                                            break;
                                                         }
+                                                    }
+
+                                                    if (isValidEdit) {
+                                                        break;
                                                     }
 
                                                     System.out.println("Valor inválido");
                                                     scan.nextLine();
+
                                                 }
 
                                             }
-
                                             break;
                                         case 8:
                                             List<Sneaker> sneakers = new ArrayList<>();
@@ -302,6 +306,7 @@ public class Main {
 
                                     switch (opcao) {
                                         case 10:
+                                            boolean isValidEdit = false;
                                             System.out.print("Informe o ID do usuário que deseja editar: ");
                                             int editUserId = scan.nextInt();
                                             scan.nextLine();
@@ -364,7 +369,13 @@ public class Main {
                                                             userToEdit.setPassword(newPassword);
                                                             userDao.editar_usuario(userToEdit);
                                                             System.out.println("Usuário editado com sucesso!");
+                                                            isValidEdit = true;
+                                                            break;
                                                         }
+                                                    }
+
+                                                    if (isValidEdit) {
+                                                        break;
                                                     }
 
                                                     System.out.println("Idade inválida");
@@ -372,7 +383,6 @@ public class Main {
                                                 }
                                             }
                                             break;
-
                                         case 11:
                                             List<Usuario> usuarios = new ArrayList<>();
                                             usuarios = userDao.getUsuarios();
