@@ -201,7 +201,7 @@ public class Main {
                                             Sneaker sneakerToEdit = snkDao.getSneakerById(editSneakerId);
                                             if (sneakerToEdit == null) {
                                                 System.out.println("Sneaker não encontrado!");
-                                                break;
+
                                             } else {
                                                 System.out.print("Informe o novo nome do Sneaker -> ");
 
@@ -244,7 +244,10 @@ public class Main {
                                                     System.out.println("Valor inválido");
                                                     scan.nextLine();
                                                 }
+
                                             }
+
+                                            break;
                                         case 8:
                                             List<Sneaker> sneakers = new ArrayList<>();
                                             sneakers = snkDao.getSneakers();
